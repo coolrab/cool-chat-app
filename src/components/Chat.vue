@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 class="grey--text">Cool Chat</h2>
-        <v-card class="ma-4 overflow-y-auto" v-scroll
+        <v-card  class="ma-4 overflow-y-auto" v-chat-scroll
          max-height="500">
             <v-card-title class="justify-center">
                 <h2 class="grey--text ">Chat with {{ this.name }}</h2>
@@ -18,7 +18,7 @@
                         </v-card>
                     </v-list-item>
                 </v-list>
-        <NewMessage :name="name" /> 
+                <NewMessage :name="name" />
         </v-card>
     </div>
 </template>

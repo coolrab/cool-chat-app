@@ -1,7 +1,7 @@
 <template>
     <div class="mx-4">
         
-                <v-form @submit.prevent="addMessage" class="mt-6 align-self-center" ref="form">
+                <v-form @submit.prevent.self="addMessage" class="mt-6 align-self-center" ref="form">
                     <v-text-field label="New Message ( press enter to add)" prepend-icon="mdi-pencil-circle" v-model="newMessage" :rules="inputRules"  required> </v-text-field>
                 </v-form>
             
@@ -33,7 +33,8 @@ export default {
                     console.log(err)
                 })
                 this.newMessage = '',
-                this.$refs.form.reset() 
+                this.$refs.form.reset()
+                this.$refs.form.resetValidation() 
             }
             
         }
