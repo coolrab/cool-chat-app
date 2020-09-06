@@ -1,7 +1,8 @@
 <template>
     <div>
         <h2 class="grey--text">Cool Chat</h2>
-        <v-card class="ma-4">
+        <v-card class="ma-4 overflow-y-auto" v-scroll
+         max-height="500">
             <v-card-title class="justify-center">
                 <h2 class="grey--text ">Chat with {{ this.name }}</h2>
             </v-card-title>
@@ -19,17 +20,13 @@
                 </v-list>
         <NewMessage :name="name" /> 
         </v-card>
-        <div>
-                    
-                   
-       
-         </div>
     </div>
 </template>
 
 <script>
 import NewMessage from '@/components/NewMessage.vue'
 import db from '@/firebase/init.js'
+import moment from 'moment'
 export default {
     name: 'Chat',
     components: {
@@ -49,7 +46,7 @@ export default {
                         id: doc.id,
                         name: doc.data().name,
                         content: doc.data().content,
-                        timestamp: doc.data().timestamp,
+                        timestamp: moment(doc.data().timestamp).format('lll')
                     })
                 }
             });
